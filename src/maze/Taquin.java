@@ -7,29 +7,21 @@ public class Taquin implements IJeu {
 	private int[][] plateau;
 	private static int[][] etatFinal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 	private ArrayList<IJeu> jeu; // à voir dans iterator
-	private IJeu pere;
+	private IJeu father;
 	public int first;
 	
 	public Taquin(int i) {
 		this.plateau = new int[3][3];
 		this.jeu = new ArrayList<IJeu>(4);
-		this.pere = null;
+		this.father = null;
 		first = 1;
 	}
 
 	public Taquin(int[][] tab) {
 		this.plateau = tab;
 		this.jeu = new ArrayList<IJeu>(4);
-		this.pere = new Taquin(0);
+		this.father = new Taquin(0);
 		first = 0;
-	}
-
-	public IJeu getPere() {
-		return pere;
-	}
-
-	public void setPere(IJeu pere) {
-		this.pere = pere;
 	}
 
 	public int[][] getPlat() {
@@ -186,6 +178,60 @@ public class Taquin implements IJeu {
 		
 		return Arrays.deepEquals(plateau,((Taquin) o).getPlat());
 
+	}
+
+	@Override
+	public IJeu getInit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setFather(IJeu pere) {
+		// TODO Auto-generated method stub
+		this.father = pere;
+	}
+
+	@Override
+	public IJeu getFather() {
+		// TODO Auto-generated method stub
+		return father;
+	}
+
+	@Override
+	public int getF() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getG() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getH() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setF(int f) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setG(int g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setH(int h) {
+		// TODO Auto-generated method stub
+		
 	}
 
 //	public static void main(String[] argv) {

@@ -69,7 +69,7 @@ public class Labyrinthe implements IJeu {
 	/*
 	 * fonction pour récupérer l'état initiale
 	 */
-	public Cell getInitiale(){
+	public Cell getInit(){
 		Cell c = new Cell(null);
 		c.setColor(4);
 		return c;
@@ -155,8 +155,8 @@ public class Labyrinthe implements IJeu {
 
 	@Override
 	public Iterator<IJeu> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return iterator(getInit());
 	}
 
 	@Override
@@ -165,18 +165,7 @@ public class Labyrinthe implements IJeu {
 		return false;
 	}
 
-	@Override
-	public void setPere(IJeu pere) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public IJeu getPere() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	public static void main(String[] args) {
 		Labyrinthe l = new Labyrinthe(10);
 		int i, j;
@@ -185,6 +174,54 @@ public class Labyrinthe implements IJeu {
 				System.out.println(l.getCells()[i][j]);
 			}
 		}
+	}
+
+	@Override
+	public void setFather(IJeu pere) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IJeu getFather() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getF() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getG() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getH() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setF(int f) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setG(int g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setH(int h) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

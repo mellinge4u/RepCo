@@ -22,7 +22,7 @@ public class ProfondeurDAbord implements IRecherche {
 			
 			while(it.hasNext() && !Echemin) {
 				IJeu nIj = it.next();
-				nIj.setPere(i);
+				nIj.setFather(i);
 				h.add(nIj);
 				Echemin = existeChemin(nIj, h);
 			}
@@ -50,9 +50,9 @@ public class ProfondeurDAbord implements IRecherche {
 	}
 
 	public void chemin(IJeu i){
-		while(i.getPere() != null){
+		while(i.getFather() != null){
 			chemin.add(i);
-			i = i.getPere();
+			i = i.getFather();
 		}
 	}
 	

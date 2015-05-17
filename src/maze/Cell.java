@@ -13,7 +13,7 @@ public class Cell implements IJeu {
 	private int g;
 	private int f; // f = g + h
 	private int color; // code pour les couleurs
-	private Cell father;
+	private IJeu father;
 	
 	/*
 	 * On instancie une cellule avec son pere
@@ -86,12 +86,12 @@ public class Cell implements IJeu {
 		this.color = color;
 	}
 
-	public Cell getFather() {
+	public IJeu getFather() {
 		return father;
 	}
 
-	public void setFather(Cell father) {
-		this.father = father;
+	public void setFather(IJeu pere) {
+		this.father = pere;
 	}
 
 	
@@ -115,16 +115,6 @@ public class Cell implements IJeu {
 		return color == 3; // 3 pour le rouge 
 	}
 
-	public void setPere(IJeu pere) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public IJeu getPere() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
@@ -134,6 +124,13 @@ public class Cell implements IJeu {
 		sb.append("-HEURISTIQUE: "+getH()+"\n");
 		sb.append("-F : "+getF()+"\n");
 		return sb.toString();
+	}
+
+
+	@Override
+	public IJeu getInit() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
