@@ -32,17 +32,20 @@ public class AStar implements IRecherche {
 			Iterator<IJeu> it = jeu.iterator();
 			while(it.hasNext()){
 				IJeu nij = it.next();
+				System.out.println(nij);
 				if((!OPEN.contains(nij) && !CLOSED.contains(nij)) || nij.getG() > s.getG()){
 					nij.setG(s.getG());
 					nij.setF(nij.getH() + nij.getG());
 					nij.setFather(s);
 					arrange(nij);
+					System.out.println("ok");
 				}
 				if(CLOSED.contains(nij)){
 					// CLOSED = CLOSED{nij}
 				}
 			}
-			// SI OPEN = ? alors s = tete(OPEN)
+			s = OPEN.get(0);
+			System.out.println(s);
 		}
 		if(OPEN.isEmpty()){
 			System.out.println(" le système n'admet pas de solutions");
@@ -73,9 +76,19 @@ public class AStar implements IRecherche {
 		}
 	}
 
-	//public ArrayList<IJeu> path(){
-		
-	//}
+	
+	/*
+	 * fonction qui retrouve le chemin 
+	 */
+	public ArrayList<IJeu> path(){
+		IJeu ij = CLOSED.getALIJeu().get(CLOSED.getALIJeu().size());
+		path.add(ij);
+		while(ij.getFather()!=null){
+			path.add(ij.getFather());
+			ij = ij.getFather();
+		}
+		return path;
+	}
 	
 	@Override
 	public boolean existeChemin(IJeu i) {
@@ -87,6 +100,9 @@ public class AStar implements IRecherche {
 		Labyrinthe l = new Labyrinthe(5);
 		AStar as = new AStar(l);
 		as.aStarAlgo();
-		//while(l.getCells()[9][9])
+		ArrayList<IJeu> alIJ = as.path();
+		for(IJeu ij : alIJ){
+			System.out.println(ij);
+		}
 	}
 }

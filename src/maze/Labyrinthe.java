@@ -35,6 +35,7 @@ public class Labyrinthe implements IJeu {
 				cells[j][k] = c;
 			}
 		}
+		cells[i-1][i-1].setColor(3);
 		buildWall(6);
 	}
 
