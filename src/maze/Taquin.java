@@ -8,15 +8,20 @@ public class Taquin implements IJeu {
 	private static int[][] etatFinal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 	private ArrayList<IJeu> jeu; // à voir dans iterator
 	private IJeu pere;
+	public int first;
 	
-	public Taquin() {
+	public Taquin(int i) {
 		this.plateau = new int[3][3];
 		this.jeu = new ArrayList<IJeu>(4);
+		this.pere = null;
+		first = 1;
 	}
 
 	public Taquin(int[][] tab) {
 		this.plateau = tab;
 		this.jeu = new ArrayList<IJeu>(4);
+		this.pere = new Taquin(0);
+		first = 0;
 	}
 
 	public IJeu getPere() {
@@ -183,27 +188,27 @@ public class Taquin implements IJeu {
 
 	}
 
-	public static void main(String[] argv) {
-		Taquin tq = new Taquin();
-		Taquin tq2 = new Taquin();
-		int[][] np = { { 3, 6, 7 }, { 8, 4, 1 }, { 2, 0, 5 } };
-		int[][] fini = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
-		int[][] clone = tq.copyTab();
-		tq.setPlateau(fini);
-		tq2.setPlateau(fini);
-		System.out.println("tq = tq2 ? "+tq.equals(tq2));
-		System.out.println(tq);
-
-		System.out
-				.println("abs:" + tq.getAbs(0) + " ord " + tq.getOrd(0)
-						+ " en bas ? " + tq.enBas() + " en haut ? "
-						+ tq.enHaut() + " a Droite ? " + tq.aDroite()
-						+ " a Gauche ? " + tq.aGauche());
-
-
-		for (IJeu t : tq) {
-			System.out.println(t);
-		}
-
-	}
+//	public static void main(String[] argv) {
+//		Taquin tq = new Taquin();
+//		Taquin tq2 = new Taquin();
+//		int[][] np = { { 3, 6, 7 }, { 8, 4, 1 }, { 2, 0, 5 } };
+//		int[][] fini = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
+//		int[][] clone = tq.copyTab();
+//		tq.setPlateau(fini);
+//		tq2.setPlateau(fini);
+//		System.out.println("tq = tq2 ? "+tq.equals(tq2));
+//		System.out.println(tq);
+//
+//		System.out
+//				.println("abs:" + tq.getAbs(0) + " ord " + tq.getOrd(0)
+//						+ " en bas ? " + tq.enBas() + " en haut ? "
+//						+ tq.enHaut() + " a Droite ? " + tq.aDroite()
+//						+ " a Gauche ? " + tq.aGauche());
+//
+//
+//		for (IJeu t : tq) {
+//			System.out.println(t);
+//		}
+//
+//	}
 }

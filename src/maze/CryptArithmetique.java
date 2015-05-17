@@ -135,4 +135,16 @@ public class CryptArithmetique implements IJeu {
 
 	}
 
+	@Override
+	public void setPere(IJeu pere) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IJeu getPere() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

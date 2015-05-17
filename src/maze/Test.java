@@ -12,7 +12,7 @@ public class Test {
 		 * largeurDabort, et stackoverflow avec longueurDAbord
 		 */
 
-		Taquin taquin1 = new Taquin();
+		Taquin taquin1 = new Taquin(1);
 		ProfondeurDAbord prof1 = new ProfondeurDAbord();
 		LargeurDAbord larg1 = new LargeurDAbord();
 
@@ -41,7 +41,9 @@ public class Test {
 //		long end = System.currentTimeMillis();
 //		System.out.println((end - start) + " millisecondes");
 		long start1 = System.currentTimeMillis();
-		System.out.println("Prof d'ab Taquin :" + prof1.existeChemin(taquin1));
+		//System.out.println("Prof d'ab Taquin :" + prof1.existeChemin(taquin1));
+		System.out.println(prof1.existeChemin(taquin1));
+		System.out.println(prof1.getChemin().size());
 		long end1 = System.currentTimeMillis();
 		System.out.println((end1 - start1) + " millisecondes");
 

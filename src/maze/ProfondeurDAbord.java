@@ -4,49 +4,60 @@ import java.util.*;
 
 public class ProfondeurDAbord implements IRecherche {
 
-	//private ArrayList<Integer[][]> chemin;
+	private ArrayList<IJeu> chemin;
 
 	public ProfondeurDAbord() {
-		//this.chemin = new ArrayList<Integer[][]>();
+		this.chemin = new ArrayList<IJeu>();
 	}
 
-	public Historique existeChemin(IJeu i) {
-		boolean chemin = false;
+	public boolean existeChemin(IJeu i) {
+		boolean Echemin = false;
 		Historique h = new Historique();
 		if (i.estFinal()) {
-			chemin = true;
+			Echemin = true;
+			this.chemin(i);
 		} else {
 			
 			Iterator<IJeu> it = i.iterator();
 			
-			while(it.hasNext() && !chemin) {
+			while(it.hasNext() && !Echemin) {
 				IJeu nIj = it.next();
+				nIj.setPere(i);
 				h.add(nIj);
-				chemin = existeChemin(nIj, h);
+				Echemin = existeChemin(nIj, h);
 			}
 		}
 		
-		return h;
+		return Echemin;
 	}
 
 	private boolean existeChemin(IJeu i, Historique h) {
-		boolean chemin = false;
+		boolean Echemin = false;
 		if (i.estFinal()) {
-			chemin = true;
+			Echemin = true;
 		} else {
 			Iterator<IJeu> it = i.iterator(); 
 			
-			while(it.hasNext() && !chemin){
+			while(it.hasNext() && !Echemin){
 				IJeu nIj = it.next();
 				if(!h.contains(nIj)){
 					h.add(nIj);
-					chemin = existeChemin(nIj, h);
+					Echemin = existeChemin(nIj, h);
 				}
 			}
 		}
-		return chemin;
+		return Echemin;
 	}
 
+	public void chemin(IJeu i){
+		while(i.getPere() != null){
+			chemin.add(i);
+			i = i.getPere();
+		}
+	}
 	
+	public ArrayList<IJeu> getChemin(){
+		return chemin;
+	}
 	
 }

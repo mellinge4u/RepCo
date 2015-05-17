@@ -42,21 +42,21 @@ public class Historique{
     	return sb.toString();
     }
     
-    public static void main(String[] args){
-	
-	Historique h = new Historique();
-	Taquin t1 = new Taquin();
-	Taquin t2 = new Taquin();
-	int[][] np = {{3,6,7},{8,4,1},{2,0,5}};
-	int[][] fini = {{1,2,3},{4,0,6},{7,8,0}};
-	t1.setPlateau(np);
-	t2.setPlateau(np);
-	System.out.println(t1.equals(t2));
-	h.add(t1);
-	System.out.println(h.contains(t1));
-	System.out.println(h.contains(t2));
-	h.add(t2);
-	System.out.println(h.contains(t2));
-    }
+//    public static void main(String[] args){
+//	
+//	Historique h = new Historique();
+//	Taquin t1 = new Taquin();
+//	Taquin t2 = new Taquin();
+//	int[][] np = {{3,6,7},{8,4,1},{2,0,5}};
+//	int[][] fini = {{1,2,3},{4,0,6},{7,8,0}};
+//	t1.setPlateau(np);
+//	t2.setPlateau(np);
+//	System.out.println(t1.equals(t2));
+//	h.add(t1);
+//	System.out.println(h.contains(t1));
+//	System.out.println(h.contains(t2));
+//	h.add(t2);
+//	System.out.println(h.contains(t2));
+//    }
 
 }
