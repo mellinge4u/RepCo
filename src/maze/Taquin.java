@@ -7,7 +7,8 @@ public class Taquin implements IJeu {
 	private int[][] plateau;
 	private static int[][] etatFinal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 	private ArrayList<IJeu> jeu; // à voir dans iterator
-
+	private IJeu pere;
+	
 	public Taquin() {
 		this.plateau = new int[3][3];
 		this.jeu = new ArrayList<IJeu>(4);
@@ -16,6 +17,14 @@ public class Taquin implements IJeu {
 	public Taquin(int[][] tab) {
 		this.plateau = tab;
 		this.jeu = new ArrayList<IJeu>(4);
+	}
+
+	public IJeu getPere() {
+		return pere;
+	}
+
+	public void setPere(IJeu pere) {
+		this.pere = pere;
 	}
 
 	public int[][] getPlat() {
