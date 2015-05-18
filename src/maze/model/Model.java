@@ -23,6 +23,7 @@ public class Model extends Observable{
 
 	public void setAlgo(IRecherche algo) {
 		this.algo = algo;
+		update();
 	}
 
 	public Labyrinthe getLab() {
@@ -31,10 +32,26 @@ public class Model extends Observable{
 
 	public void setLab(Labyrinthe lab) {
 		this.lab = lab;
+		update();
+	}
+	
+	public void launchAlgo(){
+		new AStarForMaze(lab);
+		update();
 	}
 	
 	public void update(){
+		//launchAlgo();
 		setChanged();
 		notifyObservers();
+	}
+	
+	public void setCell(int x, int y){
+		if(lab.getCells()[x][y].getColor()!=1){
+			lab.getCells()[x][y].setColor(1);
+		} else {
+			lab.getCells()[x][y].setColor(0);
+		}
+		update();
 	}
 }

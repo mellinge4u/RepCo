@@ -61,8 +61,8 @@ public class Labyrinthe implements IJeu {
 				cells[j][k] = c;
 			}
 		}
-		cells[0][0].setColor(4);
-		init = cells[0][0];
+		cells[4][4].setColor(4);
+		init = cells[4][4];
 		cells[i-1][i-1].setColor(3);
 		buildWall(6);
 	}
@@ -99,9 +99,9 @@ public class Labyrinthe implements IJeu {
 	 * fonction pour récupérer l'état initiale
 	 */
 	public Cell getInit(){
-		Cell c = new Cell(null);
-		c.setColor(4);
-		return c;
+		//Cell c = new Cell(null);
+		//c.setColor(4);
+		return init;
 	}
 	
 	

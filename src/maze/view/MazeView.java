@@ -10,6 +10,7 @@ import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import maze.listener.MazeListener;
 import maze.model.Model;
 
 public class MazeView extends JPanel implements Observer {
@@ -26,6 +27,7 @@ public class MazeView extends JPanel implements Observer {
 		for (i = 0; i < tabJB.length; i++) {
 			for (j = 0; j < tabJB.length; j++) {
 				tabJB[i][j] = new JButton();
+				tabJB[i][j].addActionListener(new MazeListener(mod, i, j, tabJB[i][j]));
 				tabJB[i][j].setBackground(Color.LIGHT_GRAY);
 				this.add(tabJB[i][j]);
 			}
