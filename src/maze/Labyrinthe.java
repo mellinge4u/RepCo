@@ -13,6 +13,7 @@ public class Labyrinthe implements IJeu {
 									// coude, voir taquin
 	private Cell[][] cells;
 	private int size;
+	private Cell init;
 
 	/*
 	 * Création d'un labyrinthe en prenant en paramètre la taille de celui ci ;
@@ -22,9 +23,12 @@ public class Labyrinthe implements IJeu {
 		size = i;
 		cells = new Cell[i][i];
 		jeu = new ArrayList<>();
+		init = new Cell(null);
+		init.setColor(4);
 		// on initialise les valeurs du tableau cells
-		for (int j = 0; j < i; j++) {
-			for (int k = 0; k < i; k++) {
+		//cells[0][0] = init;
+		for (int j = 1; j < i; j++) {
+			for (int k = 1; k < i; k++) {
 				Cell c = new Cell(null); // on ne s'occupe du père que plus tard
 				c.setCoor(j, k);
 				c.setG(j + k); // le cout augmente avec la profondeur
@@ -34,6 +38,8 @@ public class Labyrinthe implements IJeu {
 				cells[j][k] = c;
 			}
 		}
+		cells[0][0].setColor(4);
+		init = cells[0][0];
 		cells[i-1][i-1].setColor(3);
 		buildWall(6);
 	}
@@ -55,6 +61,8 @@ public class Labyrinthe implements IJeu {
 				cells[j][k] = c;
 			}
 		}
+		cells[0][0].setColor(4);
+		init = cells[0][0];
 		cells[i-1][i-1].setColor(3);
 		buildWall(6);
 	}
