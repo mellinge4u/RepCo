@@ -12,6 +12,7 @@ public interface IJeu extends Iterable<IJeu>{
     public int getF();
     public int getG();
     public int getH();
+    public int getX();
     public void setF(int f);
     public void setG(int g);
     public void setH(int h);

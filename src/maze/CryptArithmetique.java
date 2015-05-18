@@ -196,4 +196,10 @@ public class CryptArithmetique implements IJeu {
 		return 0;
 	}
 
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Labyrinthe implements IJeu {
 
-	private ArrayList<IJeu> jeu; // pour garder les actions possibles sous le
+	private ArrayList<Cell> jeu; // pour garder les actions possibles sous le
 									// coude, voir taquin
 	private Cell[][] cells;
 	private int size;
@@ -28,8 +28,28 @@ public class Labyrinthe implements IJeu {
 				Cell c = new Cell(null); // on ne s'occupe du père que plus tard
 				c.setCoor(j, k);
 				c.setG(j + k); // le cout augmente avec la profondeur
-				int volDoiseau = (int) Math.sqrt((Math.pow(i - j, 2) + Math
-						.pow(i - k, 2)));
+				int volDoiseau = (int) (Math.pow(i - j, 2) + Math.pow(i - k, 2));
+				c.setH(volDoiseau); // heuristique, prenons la distance en vol
+									// d'oiseau de la destination
+				cells[j][k] = c;
+			}
+		}
+		cells[i-1][i-1].setColor(3);
+		buildWall(6);
+	}
+	
+	public Labyrinthe() {
+		int i = 10;
+		size = i;
+		cells = new Cell[i][i];
+		jeu = new ArrayList<>();
+		// on initialise les valeurs du tableau cells
+		for (int j = 0; j < i; j++) {
+			for (int k = 0; k < i; k++) {
+				Cell c = new Cell(null); // on ne s'occupe du père que plus tard
+				c.setCoor(j, k);
+				c.setG(j + k); // le cout augmente avec la profondeur
+				int volDoiseau = (int) (Math.pow(i - j, 2) + Math.pow(i - k, 2));
 				c.setH(volDoiseau); // heuristique, prenons la distance en vol
 									// d'oiseau de la destination
 				cells[j][k] = c;
@@ -43,11 +63,11 @@ public class Labyrinthe implements IJeu {
 	 * GETTER AND SETTERS
 	 */
 
-	public ArrayList<IJeu> getJeu() {
+	public ArrayList<Cell> getJeu() {
 		return jeu;
 	}
 
-	public void setJeu(ArrayList<IJeu> jeu) {
+	public void setJeu(ArrayList<Cell> jeu) {
 		this.jeu = jeu;
 	}
 
@@ -157,31 +177,28 @@ public class Labyrinthe implements IJeu {
 			return nc;
 		}
 	
-	public Iterator<IJeu> iterator(Cell c) {
+	public Iterator<Cell> iterator(Cell c) {
 		if (aDroite(c)) {
 			jeu.add(cellRight(c));
-			System.out.println("droite");
 		}
 		if (aGauche(c)) {
 			jeu.add(cellLeft(c));
-			System.out.println("gauche");
 		}
 		if (enBas(c)) {
 			jeu.add(cellDown(c));
-			System.out.println("bas");
 		}
 		if (enHaut(c)) {
 			jeu.add(cellUp(c));
-			System.out.println("haut");
 		}
 
 		return jeu.iterator();
 	}
 
+	
 	@Override
 	public Iterator<IJeu> iterator() {
 		
-		return iterator(getInit());
+		return null;
 	}
 
 	@Override
@@ -251,6 +268,12 @@ public class Labyrinthe implements IJeu {
 
 	@Override
 	public int costTOneighbor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getX() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

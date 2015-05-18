@@ -240,6 +240,12 @@ public class Taquin implements IJeu {
 		return 0;
 	}
 
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 //	public static void main(String[] argv) {
 //		Taquin tq = new Taquin();
 //		Taquin tq2 = new Taquin();
