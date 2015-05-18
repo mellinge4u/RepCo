@@ -190,4 +190,10 @@ public class CryptArithmetique implements IJeu {
 		
 	}
 
+	@Override
+	public int costTOneighbor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

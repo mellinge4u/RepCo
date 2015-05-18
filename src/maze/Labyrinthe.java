@@ -137,18 +137,42 @@ public class Labyrinthe implements IJeu {
 		return gc;
 	}
 
+		public Cell cellLeft(Cell c) {
+			Cell nc = cells[c.getX()-1][c.getY()];
+			return nc;
+		}
+
+		public Cell cellRight(Cell c) {
+			Cell nc = cells[c.getX()+1][c.getY()];
+			return nc;
+		}
+
+		public Cell cellUp(Cell c) {
+			Cell nc = cells[c.getX()][c.getY()-1];
+			return nc;
+		}
+
+		public Cell cellDown(Cell c) {
+			Cell nc = cells[c.getX()][c.getY()+1];
+			return nc;
+		}
+	
 	public Iterator<IJeu> iterator(Cell c) {
 		if (aDroite(c)) {
-			jeu.add(c);
+			jeu.add(cellRight(c));
+			System.out.println("droite");
 		}
 		if (aGauche(c)) {
-			jeu.add(c);
+			jeu.add(cellLeft(c));
+			System.out.println("gauche");
 		}
 		if (enBas(c)) {
-			jeu.add(c);
+			jeu.add(cellDown(c));
+			System.out.println("bas");
 		}
 		if (enHaut(c)) {
-			jeu.add(c);
+			jeu.add(cellUp(c));
+			System.out.println("haut");
 		}
 
 		return jeu.iterator();
@@ -223,6 +247,12 @@ public class Labyrinthe implements IJeu {
 	public void setH(int h) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int costTOneighbor() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

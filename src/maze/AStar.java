@@ -25,27 +25,33 @@ public class AStar implements IRecherche {
 	 * Algo AStar utilisant plusieurs fonctions
 	 */
 	public void aStarAlgo() {
-		IJeu s = s0;
-		while (!OPEN.isEmpty() && !OPEN.get(0).estFinal()) { // y a pas un soucis là ?
-			CLOSED.add(s);
-			OPEN.remove(s);
+		IJeu current ; // l'état courant
+		while (!OPEN.isEmpty() ) { 
+			current = OPEN.get(0); // on prend le premier dans OPEN, celui que devrai avoir le f le plus petit
+			if(current.estFinal()){
+				path.add(current);
+			}
+			CLOSED.add(current);
+			OPEN.remove(current);
 			Iterator<IJeu> it = jeu.iterator();
-			while(it.hasNext()){
-				IJeu nij = it.next();
+			while(it.hasNext()){ // pour chaque voisin
+				IJeu nij = it.next(); // le voisin
+				if(CLOSED.contains(nij)){
+					
+				}
 				System.out.println(nij);
-				if((!OPEN.contains(nij) && !CLOSED.contains(nij)) || nij.getG() > s.getG()){
-					nij.setG(s.getG());
+				int DBCandNij; // Distance Between Current & nij, le nouveau cout
+				DBCandNij = nij.getG() - current.getG();
+				if(!OPEN.contains(nij) || DBCandNij < nij.getG()){
+					nij.setG(DBCandNij);
 					nij.setF(nij.getH() + nij.getG());
-					nij.setFather(s);
-					arrange(nij);
+					nij.setFather(current);
+					if(!OPEN.contains(nij)){
+						arrange(nij); // si jamais le voisin n'est pas dans OPEN, on l'y range
+					}
 					System.out.println("ok");
 				}
-				if(CLOSED.contains(nij)){
-					// CLOSED = CLOSED{nij}
-				}
 			}
-			s = OPEN.get(0);
-			System.out.println(s);
 		}
 		if(OPEN.isEmpty()){
 			System.out.println(" le système n'admet pas de solutions");

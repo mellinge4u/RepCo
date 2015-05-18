@@ -15,4 +15,5 @@ public interface IJeu extends Iterable<IJeu>{
     public void setF(int f);
     public void setG(int g);
     public void setH(int h);
+    public int costTOneighbor();
 }

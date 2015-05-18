@@ -234,6 +234,12 @@ public class Taquin implements IJeu {
 		
 	}
 
+	@Override
+	public int costTOneighbor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 //	public static void main(String[] argv) {
 //		Taquin tq = new Taquin();
 //		Taquin tq2 = new Taquin();

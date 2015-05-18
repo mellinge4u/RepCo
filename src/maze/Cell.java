@@ -132,6 +132,13 @@ public class Cell implements IJeu {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	@Override
+	public int costTOneighbor() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }
